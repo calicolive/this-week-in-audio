@@ -45,18 +45,23 @@ export default function Header() {
   );
 
   return (
-    <AnimatePresence mode='wait' initial={false}>
+    <AnimatePresence mode='popLayout' initial={false}>
       <motion.header
         layout
         style={{
           height: useTransform(
             scrollYBoundedProgressThrottled,
             [0, 1],
-            [60, 30]
+            [60, 40]
           ),
+          // boxShadow: useTransform(
+          //   scrollYBoundedProgressThrottled,
+          //   [0, 1],
+          //   ['0px 0px 0px 0px #FFFFFF', '0px 0px 5px 0px #020617']
+          // ),
         }}
         exit={{ opacity: 1, transition: { duration: 0.2 } }}
-        className='sticky top-0 z-30 flex h-12 w-full items-center justify-between bg-slate-50 px-6  text-slate-950  '>
+        className='sticky top-0 z-30 flex h-12 w-full items-center justify-between bg-slate-50 px-6 shadow-sm  text-slate-950  '>
         <div className='flex items-center space-x-2 '>
           <Link
             preventScrollReset
@@ -87,10 +92,10 @@ export default function Header() {
           <Link to='/newsletter' className=''>
             Newsletter
           </Link>
-          <Link to='/' className=''>
+          <Link to='/about' className=''>
             About
           </Link>
-          <Link to='/' className=''>
+          <Link target='_blank' to='https://discord.gg/qV2YXdMQRM' className=''>
             Discord
           </Link>
         </motion.nav>
@@ -147,7 +152,8 @@ export default function Header() {
                         About
                       </Link>
                       <Link
-                        to='/discord'
+                        target='_blank'
+                        to='https://discord.gg/qV2YXdMQRM'
                         onClick={() => setIsOpen(false)}
                         className=' hover:text-neutral-400'>
                         Discord

@@ -10,11 +10,12 @@ import {
 
 import stylesheet from '~/tailwind.css';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+  { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
   {
     href: 'https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap',
     rel: 'stylesheet',
@@ -30,9 +31,10 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className='bg-slate-50 '>
+      <body className='bg-slate-50'>
         <Header />
         <Outlet />
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
