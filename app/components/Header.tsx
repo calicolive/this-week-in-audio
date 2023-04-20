@@ -9,27 +9,27 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className='sticky top-0 w-screen z-30 flex h-12  items-center justify-between bg-slate-50 px-6 shadow-sm  text-slate-950  '>
+    <header className='fixed inset-0  w-screen z-30 flex h-12  items-center justify-between bg-slate-50 px-6 shadow-sm  text-slate-950  '>
       <div className='flex items-center space-x-2 '>
         <Link
           preventScrollReset
           to={'/'}
           className='text-2xl font-bold tracking-tight'>
-          <p>This Week in Audio</p>
+          This Week in Audio
         </Link>
       </div>
       {/* desktop Nav */}
-      <motion.nav className=' hidden flex-1 space-x-12 text-right   md:block'>
+      <nav className=' hidden flex-1 space-x-12 text-right   md:block'>
         <Link to='/newsletter' className=''>
           Newsletter
         </Link>
         <Link to='/about' className=''>
           About
         </Link>
-        <Link target='_blank' to='https://discord.gg/qV2YXdMQRM' className=''>
+        <Link target='_blank' to='https://discord.gg/qV2YXdMQRM'>
           Discord
         </Link>
-      </motion.nav>
+      </nav>
       {/* mobile nav */}
       <div className='flex-1 text-right md:hidden'>
         <button
@@ -48,16 +48,16 @@ export default function Header() {
               as={motion.div}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.35 }}
               exit={{ opacity: 0 }}
               open={isOpen}
               onClose={() => setIsOpen(false)}
-              className='relative z-40 '>
+              className='relative z-30 '>
               <Dialog.Overlay className='fixed inset-0  bg-slate-950/50' />
               <div className=' fixed inset-0 flex justify-end  overflow-hidden '>
                 <Dialog.Panel className='w-full max-w-xs  bg-slate-50 shadow-xl'>
                   <div className=' flex flex-col px-6 text-slate-950'>
-                    <div className='flex h-14 items-center justify-end'>
+                    <div className='flex h-12 items-center justify-end'>
                       <button onClick={() => setIsOpen(false)}>
                         <XMarkIcon className='h-8 w-8 text-slate-950' />
                       </button>

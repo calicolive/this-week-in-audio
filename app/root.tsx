@@ -20,6 +20,7 @@ export const links: LinksFunction = () => [
     href: 'https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap',
     rel: 'stylesheet',
   },
+  { rel: 'icon', href: '/favicon.png' },
 ];
 
 export default function App() {

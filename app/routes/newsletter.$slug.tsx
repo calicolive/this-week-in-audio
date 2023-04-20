@@ -10,10 +10,18 @@ export const loader = async ({ params }: LoaderArgs) => {
   return { post };
 };
 
+export function meta() {
+  return [
+    {
+      title: 'This Week in Audio',
+    },
+  ];
+}
+
 export default function PostRoute() {
   const { post } = useLoaderData();
   return (
-    <main className='bg-slate-100'>
+    <main className='bg-slate-100 mt-12'>
       <Post post={post} />
     </main>
   );
