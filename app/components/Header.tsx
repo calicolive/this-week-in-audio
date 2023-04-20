@@ -1,121 +1,46 @@
 import { Link } from '@remix-run/react';
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useScroll,
-  useTransform,
-} from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { Dialog } from '@headlessui/react';
-import { useEffect, useState } from 'react';
-
-const clamp = (number: number, min: number, max: number) =>
-  Math.min(Math.max(number, min), max);
-
-function useBoundedScroll(bounds: number) {
-  let { scrollY } = useScroll();
-  let scrollYBounded = useMotionValue(0);
-  let scrollYBoundedProgress = useTransform(
-    scrollYBounded,
-    [0, bounds],
-    [0, 1]
-  );
-  useEffect(() => {
-    return scrollY.onChange((current) => {
-      let previous = scrollY.getPrevious();
-      let diff = current - previous;
-      let newScrollYBounded = scrollYBounded.get() + diff;
-
-      scrollYBounded.set(clamp(newScrollYBounded, 0, bounds));
-    });
-  }, [bounds, scrollY, scrollYBounded]);
-
-  return { scrollYBounded, scrollYBoundedProgress };
-}
+import { useState } from 'react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { scrollYBoundedProgress } = useBoundedScroll(200);
-  const scrollYBoundedProgressThrottled = useTransform(
-    scrollYBoundedProgress,
-    [0, 0.15, 1],
-    [0, 0, 1]
-  );
 
   return (
-    <AnimatePresence mode='popLayout' initial={false}>
-      <motion.header
-        layout
-        style={{
-          height: useTransform(
-            scrollYBoundedProgressThrottled,
-            [0, 1],
-            [60, 40]
-          ),
-          // boxShadow: useTransform(
-          //   scrollYBoundedProgressThrottled,
-          //   [0, 1],
-          //   ['0px 0px 0px 0px #FFFFFF', '0px 0px 5px 0px #020617']
-          // ),
-        }}
-        exit={{ opacity: 1, transition: { duration: 0.2 } }}
-        className='sticky top-0 z-30 flex h-12 w-full items-center justify-between bg-slate-50 px-6 shadow-sm  text-slate-950  '>
-        <div className='flex items-center space-x-2 '>
-          <Link
-            preventScrollReset
-            to={'/'}
-            className='text-2xl font-bold tracking-tight'>
-            <motion.p
-              style={{
-                scale: useTransform(
-                  scrollYBoundedProgressThrottled,
-                  [0, 1],
-                  [1, 0.9]
-                ),
-              }}>
-              This Week in Audio
-            </motion.p>
-          </Link>
-        </div>
-        {/* desktop Nav */}
-        <motion.nav
-          style={{
-            opacity: useTransform(
-              scrollYBoundedProgressThrottled,
-              [0, 1],
-              [1, 0]
-            ),
-          }}
-          className=' hidden flex-1 space-x-12 text-right   md:block'>
-          <Link to='/newsletter' className=''>
-            Newsletter
-          </Link>
-          <Link to='/about' className=''>
-            About
-          </Link>
-          <Link target='_blank' to='https://discord.gg/qV2YXdMQRM' className=''>
-            Discord
-          </Link>
-        </motion.nav>
-        {/* mobile nav */}
-        <div className='flex-1 text-right md:hidden'>
-          <motion.button
-            style={{
-              scale: useTransform(
-                scrollYBoundedProgressThrottled,
-                [0, 1],
-                [1, 0.9]
-              ),
-            }}
-            onClick={(event) => {
-              event.preventDefault();
-              event.stopPropagation();
-              setIsOpen(true);
-            }}>
-            <Bars3Icon className='h-8 w-8' />
-          </motion.button>
+    <header className='sticky top-0 w-screen z-30 flex h-12  items-center justify-between bg-slate-50 px-6 shadow-sm  text-slate-950  '>
+      <div className='flex items-center space-x-2 '>
+        <Link
+          preventScrollReset
+          to={'/'}
+          className='text-2xl font-bold tracking-tight'>
+          <p>This Week in Audio</p>
+        </Link>
+      </div>
+      {/* desktop Nav */}
+      <motion.nav className=' hidden flex-1 space-x-12 text-right   md:block'>
+        <Link to='/newsletter' className=''>
+          Newsletter
+        </Link>
+        <Link to='/about' className=''>
+          About
+        </Link>
+        <Link target='_blank' to='https://discord.gg/qV2YXdMQRM' className=''>
+          Discord
+        </Link>
+      </motion.nav>
+      {/* mobile nav */}
+      <div className='flex-1 text-right md:hidden'>
+        <button
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setIsOpen(true);
+          }}>
+          <Bars3Icon className='h-8 w-8' />
+        </button>
+        <AnimatePresence>
           {isOpen && (
             <Dialog
               static
@@ -164,8 +89,8 @@ export default function Header() {
               </div>
             </Dialog>
           )}
-        </div>
-      </motion.header>
-    </AnimatePresence>
+        </AnimatePresence>
+      </div>
+    </header>
   );
 }

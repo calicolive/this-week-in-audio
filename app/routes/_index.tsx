@@ -41,8 +41,18 @@ export default function Index() {
               </HeroSubtitle>
             </Hero>
             {/* email form */}
+
+            <p className='mt-4 text-sm font-medium text-slate-800'>
+              Curated by the{' '}
+              <a
+                className='font-bold tracking-tighter text-slate-800 '
+                href='https://oscaudio.gumroad.com/'>
+                OSC Audio
+              </a>{' '}
+              team.
+            </p>
             <form
-              className='mx-auto mt-10 flex max-w-md gap-x-4 '
+              className='mx-auto mt-6 flex max-w-md gap-x-4 '
               action='https://app.gumroad.com/follow_from_embed_form'
               method='post'
               id='gumroad-follow-form-embed'>
@@ -59,6 +69,7 @@ export default function Index() {
                 className='min-w-0 flex-auto rounded-md border-0 bg-white px-3.5 py-2 text-slate-950 shadow-sm ring-1 ring-inset ring-slate-950/50 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
                 placeholder='Enter your email'
               />
+
               <button
                 id='gumroad-follow-form-embed-button'
                 type='submit'
@@ -66,10 +77,6 @@ export default function Index() {
                 Sign Up!
               </button>
             </form>
-
-            <p className='mt-12 font-medium'>
-              Join over 25,000 readers for one weekly email
-            </p>
           </div>
         </Container>
       </section>

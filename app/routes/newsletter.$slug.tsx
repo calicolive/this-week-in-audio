@@ -12,5 +12,9 @@ export const loader = async ({ params }: LoaderArgs) => {
 
 export default function PostRoute() {
   const { post } = useLoaderData();
-  return <Post post={post} />;
+  return (
+    <main className='bg-slate-100'>
+      <Post post={post} />
+    </main>
+  );
 }

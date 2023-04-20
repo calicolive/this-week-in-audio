@@ -6,10 +6,10 @@ export default function Post({ post }: { post: SanityDocument }) {
   const { title, body } = post;
 
   return (
-    <main className='container mx-auto prose prose-lg p-4 text-black'>
+    <article className='container mx-auto hover:prose-a:text-cyan-300 bg-slate-50 prose-a:no-underline prose prose-sm prose-slate md:prose-md lg:prose-lg p-4 text-slate-950'>
       {title ? <h1>{title}</h1> : null}
 
       {body ? <PortableText value={body} /> : null}
-    </main>
+    </article>
   );
 }
