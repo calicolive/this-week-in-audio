@@ -39,7 +39,7 @@ export default function Index() {
           alt='hero illustration '
           className='absolute inset-0 -z-10 h-full  w-full object-cover blur-[1px]'
         />
-        <div className='absolute inset-0 -z-10 h-full w-full  bg-gradient-to-b from-cyan-200 via-fuchsia-400/30 to-slate-50 ' />
+        <div className='absolute inset-0 -z-10 h-full w-full  bg-gradient-to-b from-cyan-200 via-fuchsia-400/40 to-slate-50 ' />
 
         <Container>
           <div className='flex flex-col items-center justify-center py-32   sm:py-48 lg:py-56'>
