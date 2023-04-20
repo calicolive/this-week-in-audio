@@ -9,7 +9,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className='fixed inset-0  w-screen z-30 flex h-12  items-center justify-between bg-slate-50 px-6 shadow-sm  text-slate-950  '>
+    <header className='fixed inset-0  w-screen z-30 flex h-12  items-center justify-between bg-slate-50 px-4 sm:px-12 shadow-sm  text-slate-950  '>
       <div className='flex items-center space-x-2 '>
         <Link
           preventScrollReset
@@ -56,7 +56,7 @@ export default function Header() {
               <Dialog.Overlay className='fixed inset-0  bg-slate-950/50' />
               <div className=' fixed inset-0 flex justify-end  overflow-hidden '>
                 <Dialog.Panel className='w-full max-w-xs  bg-slate-50 shadow-xl'>
-                  <div className=' flex flex-col px-6 text-slate-950'>
+                  <div className=' flex flex-col px-4 text-slate-950'>
                     <div className='flex h-12 items-center justify-end'>
                       <button onClick={() => setIsOpen(false)}>
                         <XMarkIcon className='h-8 w-8 text-slate-950' />
